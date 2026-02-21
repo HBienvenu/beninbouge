@@ -1,6 +1,7 @@
 // resources/js/Layouts/AppLayout.jsx
 import { Head } from "@inertiajs/react";
 import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
 export default function AppLayout({ children }) {
 
@@ -19,6 +20,7 @@ export default function AppLayout({ children }) {
             <main className="pt-16">{children}</main>
 
             {/* Footer simple pour compléter */}
+            <Footer />
             
         </div>
     );
