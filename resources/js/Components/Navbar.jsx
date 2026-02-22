@@ -62,9 +62,9 @@ export default function Navbar() {
                     {/* Menu desktop */}
                     <div className="hidden md:flex items-center space-x-4">
                         {[
-                            { href: "/events", label: "Projets Structurels" },
-                            { href: "/categories", label: "Actualités" },
-                            { href: "/about", label: "Événements" },
+                            { href: "#", label: "Projets Structurels" },
+                            { href: "#", label: "Actualités" },
+                            { href: "#", label: "Événements" },
                         ].map(({ href, label }) => (
                             <Link
                                 key={href}
@@ -76,7 +76,7 @@ export default function Navbar() {
                         ))}
 
                         <Link
-                            href="/contact"
+                            href="#"
                             className="bg-[#008651] dark:bg-[#16a34a] text-white px-4 py-2 rounded-lg hover:bg-[#229951] dark:hover:bg-[#15803d] transition-colors text-sm font-medium"
                         >
                             Contact
@@ -183,9 +183,9 @@ export default function Navbar() {
                     >
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             {[
-                                { href: "/events", label: "Projets Structurels" },
-                                { href: "/categories", label: "Actualités" },
-                                { href: "/about", label: "Événements" },
+                                { href: "#", label: "Projets Structurels" },
+                                { href: "#", label: "Actualités" },
+                                { href: "#", label: "Événements" },
                             ].map((item, index) => (
                                 <motion.div
                                     key={item.href}
@@ -207,7 +207,7 @@ export default function Navbar() {
 
                             <motion.div custom={3} variants={itemVariants} initial="hidden" animate="visible" exit="hidden" className="pt-4">
                                 <Link
-                                    href="/contact"
+                                    href="#"
                                     className="block w-full text-center bg-[#008651] dark:bg-[#16a34a] text-white px-4 py-2 rounded-lg hover:bg-[#229951] dark:hover:bg-[#15803d] transition-colors text-base font-medium"
                                     onClick={() => setIsMenuOpen(false)}
                                 >

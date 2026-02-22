@@ -52,7 +52,7 @@ export default function EvenementPasse() {
                     Événements Récents
                 </h2>
                 <Link
-                    href="/events"
+                    href="#"
                     className="text-[#008651] hover:text-[#229951] font-semibold transition-colors"
                 >
                     Voir tout →
@@ -64,7 +64,7 @@ export default function EvenementPasse() {
                 {pastEvents.map((event, index) => (
                     <Link
                         key={event.id}
-                        href={`/events/${event.id}`}
+                        href="#"
                         className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition group"
                         data-aos="fade-up"
                         data-aos-delay={index * 100}

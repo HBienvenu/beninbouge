@@ -14,7 +14,7 @@ export default function ContactSection() {
         <section
             ref={sectionRef}
             id="contact"
-            className="relative bg-[#f9fafb] py-16 px-4 sm:px-6 md:px-12"
+            className="relative bg-gray-50 dark:bg-gray-950 py-16 px-4 sm:px-6 md:px-12 transition-colors duration-300"
             style={{ fontFamily: "'Sora', sans-serif" }}
         >
             <style>{`
@@ -39,6 +39,18 @@ export default function ContactSection() {
                     box-shadow: 0 0 0 4px rgba(34,197,94,0.10);
                 }
 
+                .dark .contact-input {
+                    background: #1e293b;
+                    border-color: #334155;
+                    color: #f1f5f9;
+                }
+                .dark .contact-input::placeholder { color: #64748b; }
+                .dark .contact-input:focus {
+                    border-color: #4ade80;
+                    background: #1e293b;
+                    box-shadow: 0 0 0 4px rgba(74,222,128,0.12);
+                }
+
                 .info-card {
                     display: flex;
                     align-items: center;
@@ -48,12 +60,20 @@ export default function ContactSection() {
                     border-radius: 18px;
                     border: 1.5px solid #f3f4f6;
                     box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-                    transition: box-shadow 0.25s, transform 0.25s;
+                    transition: box-shadow 0.25s, transform 0.25s, background 0.3s, border-color 0.3s;
                     text-decoration: none;
                 }
                 .info-card:hover {
                     box-shadow: 0 8px 32px rgba(34,197,94,0.13);
                     transform: translateY(-2px);
+                }
+                .dark .info-card {
+                    background: #1e293b;
+                    border-color: #334155;
+                    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+                }
+                .dark .info-card:hover {
+                    box-shadow: 0 8px 32px rgba(74,222,128,0.10);
                 }
 
                 .submit-btn {
@@ -92,9 +112,9 @@ export default function ContactSection() {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     className="text-center mb-10"
-                > 
+                >
                     <h2
-                        className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2"
+                        className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300"
                         style={{ letterSpacing: "-0.02em" }}
                     >
                         Travaillons{" "}
@@ -106,7 +126,7 @@ export default function ContactSection() {
                             ensemble
                         </span>
                     </h2>
-                    <p className="text-sm text-gray-500" style={{ maxWidth: 480, margin: "0 auto" }}>
+                    <p className="text-sm text-gray-500 dark:text-slate-400 transition-colors duration-300" style={{ maxWidth: 480, margin: "0 auto" }}>
                         Une question, une suggestion ou un partenariat ?
                         Notre équipe est à votre écoute et vous répond en moins de 48h.
                     </p>
@@ -122,7 +142,7 @@ export default function ContactSection() {
                             variants={fadeUp(0.1)}
                             initial="hidden"
                             animate={isInView ? "visible" : "hidden"}
-                            href="https://wa.me/22901XXXXXXXX"
+                            href="https://wa.me/2290196127764"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="info-card"
@@ -134,10 +154,10 @@ export default function ContactSection() {
                                 </svg>
                             </div>
                             <div className="flex-1">
-                                <p className="font-semibold text-gray-900 text-sm mb-0.5">WhatsApp</p>
-                                <p className="text-xs text-gray-400">Réponse rapide garantie</p>
+                                <p className="font-semibold text-gray-900 dark:text-white text-sm mb-0.5 transition-colors duration-300">WhatsApp</p>
+                                <p className="text-xs text-gray-400 dark:text-slate-500">Réponse rapide garantie</p>
                             </div>
-                            <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-gray-300 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </motion.a>
@@ -147,20 +167,19 @@ export default function ContactSection() {
                             variants={fadeUp(0.2)}
                             initial="hidden"
                             animate={isInView ? "visible" : "hidden"}
-                            href="mailto:contact@beninquibouge.bj"
+                            href="mailto:bienvenuhounye05@gmail.com"
                             className="info-card"
                         >
-                            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0"
-                                style={{ background: "#f0fdf4", border: "1.5px solid #bbf7d0" }}>
+                            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
                                 <svg className="w-5 h-5" fill="none" stroke="#16a34a" strokeWidth={2} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                             </div>
                             <div className="flex-1">
-                                <p className="font-semibold text-gray-900 text-sm mb-0.5">Email</p>
-                                <p className="text-xs text-gray-400">contact@beninquibouge.bj</p>
+                                <p className="font-semibold text-gray-900 dark:text-white text-sm mb-0.5 transition-colors duration-300">Email</p>
+                                <p className="text-xs text-gray-400 dark:text-slate-500">contact@beninquibouge.bj</p>
                             </div>
-                            <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-gray-300 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </motion.a>
@@ -173,16 +192,15 @@ export default function ContactSection() {
                             className="info-card"
                             style={{ cursor: "default" }}
                         >
-                            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0"
-                                style={{ background: "#f0fdf4", border: "1.5px solid #bbf7d0" }}>
+                            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
                                 <svg className="w-5 h-5" fill="none" stroke="#16a34a" strokeWidth={2} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </div>
                             <div className="flex-1">
-                                <p className="font-semibold text-gray-900 text-sm mb-0.5">Adresse</p>
-                                <p className="text-xs text-gray-400">Cotonou, Bénin</p>
+                                <p className="font-semibold text-gray-900 dark:text-white text-sm mb-0.5 transition-colors duration-300">Adresse</p>
+                                <p className="text-xs text-gray-400 dark:text-slate-500">Cotonou, Bénin</p>
                             </div>
                         </motion.div>
 
@@ -191,10 +209,13 @@ export default function ContactSection() {
                             variants={fadeUp(0.4)}
                             initial="hidden"
                             animate={isInView ? "visible" : "hidden"}
-                            className="text-xs text-gray-400 italic px-1"
+                            className="text-xs text-gray-400 dark:text-slate-500 italic px-1 transition-colors duration-300"
                         >
                             Nous ne spammons pas ! Consultez notre{" "}
-                            <a href="/politique-confidentialite" style={{ color: "#16a34a", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                            <a
+                                href="#"
+                                className="text-green-600 dark:text-green-400 font-bold underline underline-offset-[3px] hover:text-green-700 dark:hover:text-green-300 transition-colors"
+                            >
                                 politique de confidentialité
                             </a>
                             .
@@ -206,41 +227,38 @@ export default function ContactSection() {
                         variants={fadeUp(0.2)}
                         initial="hidden"
                         animate={isInView ? "visible" : "hidden"}
-                        className="rounded-2xl p-5 sm:p-6"
-                        style={{
-                            background: "#fff",
-                            border: "1.5px solid #f3f4f6",
-                            boxShadow: "0 4px 32px rgba(0,0,0,0.07)",
-                        }}
+                        className="rounded-2xl p-5 sm:p-6 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 transition-colors duration-300"
+                        style={{ boxShadow: "0 4px 32px rgba(0,0,0,0.07)" }}
                     >
                         <form noValidate className="flex flex-col gap-4">
+
                             {/* Nom + Prénom */}
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-xs font-semibold text-gray-600 mb-1.5" htmlFor="nom">Nom</label>
+                                    <label className="block text-xs font-semibold text-gray-600 dark:text-slate-400 mb-1.5 transition-colors duration-300" htmlFor="nom">Nom</label>
                                     <input type="text" id="nom" name="nom" placeholder="Doe" className="contact-input" />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-semibold text-gray-600 mb-1.5" htmlFor="prenom">Prénom</label>
+                                    <label className="block text-xs font-semibold text-gray-600 dark:text-slate-400 mb-1.5 transition-colors duration-300" htmlFor="prenom">Prénom</label>
                                     <input type="text" id="prenom" name="prenom" placeholder="John" className="contact-input" />
                                 </div>
                             </div>
 
                             {/* Téléphone */}
                             <div>
-                                <label className="block text-xs font-semibold text-gray-600 mb-1.5" htmlFor="numero">Téléphone</label>
+                                <label className="block text-xs font-semibold text-gray-600 dark:text-slate-400 mb-1.5 transition-colors duration-300" htmlFor="numero">Téléphone</label>
                                 <input type="tel" id="numero" name="numero" placeholder="+229 01 XX XX XX" className="contact-input" />
                             </div>
 
                             {/* Email */}
                             <div>
-                                <label className="block text-xs font-semibold text-gray-600 mb-1.5" htmlFor="email">Email</label>
+                                <label className="block text-xs font-semibold text-gray-600 dark:text-slate-400 mb-1.5 transition-colors duration-300" htmlFor="email">Email</label>
                                 <input type="email" id="email" name="email" placeholder="john.doe@example.com" className="contact-input" />
                             </div>
 
                             {/* Message */}
                             <div>
-                                <label className="block text-xs font-semibold text-gray-600 mb-1.5" htmlFor="message">Message</label>
+                                <label className="block text-xs font-semibold text-gray-600 dark:text-slate-400 mb-1.5 transition-colors duration-300" htmlFor="message">Message</label>
                                 <textarea id="message" name="message" rows={4} placeholder="Parlez-nous de votre projet ou de votre question…" className="contact-input" style={{ resize: "none" }} />
                             </div>
 

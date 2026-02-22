@@ -11,26 +11,10 @@ export default function NewsletterSection() {
     const blobRef2 = useRef(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-    // GSAP floating blobs animation
     useEffect(() => {
         if (blobRef1.current && blobRef2.current) {
-            gsap.to(blobRef1.current, {
-                x: 30,
-                y: -20,
-                duration: 4,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-            });
-            gsap.to(blobRef2.current, {
-                x: -20,
-                y: 25,
-                duration: 5,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: 1,
-            });
+            gsap.to(blobRef1.current, { x: 30, y: -20, duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut" });
+            gsap.to(blobRef2.current, { x: -20, y: 25, duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1 });
         }
     }, []);
 
@@ -56,15 +40,16 @@ export default function NewsletterSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden bg-white py-24 px-6"
+            className="relative overflow-hidden bg-white dark:bg-slate-900 py-24 px-6 transition-colors duration-300"
             style={{ fontFamily: "'Sora', sans-serif" }}
         >
-            {/* Google Font Import */}
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap');
 
                 .newsletter-input::placeholder { color: #a3b8a3; }
                 .newsletter-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
+                .dark .newsletter-input::placeholder { color: #4b5563; }
+                .dark .newsletter-input:focus { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
 
                 .btn-inscription {
                     position: relative;
@@ -83,30 +68,26 @@ export default function NewsletterSection() {
                 .btn-inscription:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(22,163,74,0.35); }
                 .btn-inscription:active { transform: translateY(0); }
 
-                .policy-link {
-                    color: #16a34a;
-                    font-weight: 700;
-                    font-style: italic;
-                    text-decoration: underline;
-                    text-underline-offset: 3px;
-                }
+                .policy-link { color: #16a34a; font-weight: 700; font-style: italic; text-decoration: underline; text-underline-offset: 3px; }
                 .policy-link:hover { color: #15803d; }
+                .dark .policy-link { color: #4ade80; }
+                .dark .policy-link:hover { color: #86efac; }
             `}</style>
 
-            {/* Decorative blobs */}
+            {/* Blobs décoratifs */}
             <div
                 ref={blobRef1}
-                className="pointer-events-none absolute -top-20 -left-20 w-80 h-80 rounded-full opacity-10"
+                className="pointer-events-none absolute -top-20 -left-20 w-80 h-80 rounded-full opacity-10 dark:opacity-5"
                 style={{ background: "radial-gradient(circle, #4ade80, #16a34a)" }}
             />
             <div
                 ref={blobRef2}
-                className="pointer-events-none absolute -bottom-20 right-0 w-96 h-96 rounded-full opacity-10"
+                className="pointer-events-none absolute -bottom-20 right-0 w-96 h-96 rounded-full opacity-10 dark:opacity-5"
                 style={{ background: "radial-gradient(circle, #86efac, #22c55e)" }}
             />
 
-            {/* Thin green top border accent */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-green-500 to-emerald-400" />
+            {/* Barre top */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-green-500 to-emerald-400 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700" />
 
             <div className="relative max-w-6xl mx-auto">
                 <motion.div
@@ -115,13 +96,11 @@ export default function NewsletterSection() {
                     animate={isInView ? "visible" : "hidden"}
                     className="flex flex-col lg:flex-row items-center gap-16"
                 >
-                    {/* Left: Text block */}
+                    {/* Bloc texte */}
                     <div className="flex-1 max-w-xl">
-                        {/* Pill badge */}
                         <motion.div variants={itemVariants}>
                             <span
-                                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
-                                style={{ background: "#f0fdf4", color: "#16a34a", border: "1px solid #bbf7d0" }}
+                                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 transition-colors duration-300"
                             >
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse inline-block" />
                                 Newsletter
@@ -130,86 +109,76 @@ export default function NewsletterSection() {
 
                         <motion.h2
                             variants={itemVariants}
-                            className="text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 mb-5"
+                            className="text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white mb-5 transition-colors duration-300"
                             style={{ letterSpacing: "-0.02em" }}
                         >
                             Restez connectés au{" "}
-                            <span
-                                style={{
-                                    background: "linear-gradient(135deg, #16a34a, #4ade80)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                }}
-                            >
+                            <span style={{
+                                background: "linear-gradient(135deg, #16a34a, #4ade80)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                            }}>
                                 Bénin
                             </span>{" "}
                             qui se transforme et qui Bouge
                         </motion.h2>
 
-                        <motion.p
-                            variants={itemVariants}
-                            className="text-base font-semibold text-gray-700 mb-3"
-                        >
+                        <motion.p variants={itemVariants} className="text-base font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors duration-300">
                             Inscrivez-vous pour recevoir chaque mois des informations liées au Bénin qui Bouge
                         </motion.p>
 
-                        <motion.p
-                            variants={itemVariants}
-                            className="text-sm text-gray-400 italic"
-                        >
+                        <motion.p variants={itemVariants} className="text-sm text-gray-400 dark:text-gray-500 italic transition-colors duration-300">
                             Nous ne spammons pas ! Consultez notre{" "}
-                            <a href="/politique-confidentialite" className="policy-link">
+                            <a href="#" className="policy-link">
                                 politique de confidentialité
                             </a>{" "}
                             pour plus d'informations.
                         </motion.p>
                     </div>
 
-                    {/* Right: Form block */}
+                    {/* Bloc formulaire */}
                     <motion.div variants={itemVariants} className="w-full lg:w-96">
                         {submitted ? (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                                className="text-center py-10 px-8 rounded-2xl"
-                                style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}
+                                className="text-center py-10 px-8 rounded-2xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
                             >
                                 <div className="text-5xl mb-4">🎉</div>
-                                <h3 className="text-xl font-bold text-green-700 mb-2">Vous êtes inscrit(e) !</h3>
-                                <p className="text-green-600 text-sm">
+                                <h3 className="text-xl font-bold text-green-700 dark:text-green-400 mb-2">
+                                    Vous êtes inscrit(e) !
+                                </h3>
+                                <p className="text-green-600 dark:text-green-500 text-sm">
                                     Bienvenue dans la communauté du Bénin qui Bouge.
                                 </p>
                             </motion.div>
                         ) : (
-                            <form
-                                onSubmit={handleSubmit}
-                                className="flex flex-col gap-4"
-                            >
-                                <div className="relative">
-                                    <input
-                                        type="email"
-                                        required
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="Entrez votre adresse e-mail *"
-                                        className="newsletter-input w-full px-5 py-4 rounded-2xl text-sm text-gray-800 bg-white transition-all duration-200"
-                                        style={{
-                                            border: "1.5px solid #d1fae5",
-                                            boxShadow: "0 2px 12px rgba(34,197,94,0.08)",
-                                            fontFamily: "'Sora', sans-serif",
-                                        }}
-                                    />
-                                </div>
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                <input
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Entrez votre adresse e-mail *"
+                                    className="newsletter-input w-full px-5 py-4 rounded-2xl text-sm
+                                               text-gray-800 dark:text-gray-100
+                                               bg-white dark:bg-slate-800
+                                               transition-all duration-200"
+                                    style={{
+                                        border: "1.5px solid",
+                                        borderColor: "var(--input-border)",
+                                        boxShadow: "0 2px 12px rgba(34,197,94,0.08)",
+                                        fontFamily: "'Sora', sans-serif",
+                                    }}
+                                />
 
                                 <button
                                     type="submit"
                                     disabled={loading}
                                     className="btn-inscription w-full py-4 rounded-2xl text-white font-bold text-sm tracking-wide"
                                     style={{
-                                        background: loading
-                                            ? "#4ade80"
-                                            : "linear-gradient(135deg, #16a34a 0%, #22c55e 100%)",
+                                        background: loading ? "#4ade80" : "linear-gradient(135deg, #16a34a 0%, #22c55e 100%)",
                                         fontFamily: "'Sora', sans-serif",
                                         letterSpacing: "0.04em",
                                         cursor: loading ? "not-allowed" : "pointer",
@@ -223,18 +192,13 @@ export default function NewsletterSection() {
                                             </svg>
                                             Inscription en cours…
                                         </span>
-                                    ) : (
-                                        "Inscription ici"
-                                    )}
+                                    ) : "Inscription ici"}
                                 </button>
                             </form>
                         )}
 
                         {/* Trust badges */}
-                        <motion.div
-                            variants={itemVariants}
-                            className="mt-6 flex items-center gap-6 justify-center"
-                        >
+                        <motion.div variants={itemVariants} className="mt-6 flex items-center gap-6 justify-center">
                             {[
                                 { icon: "🔒", text: "Données sécurisées" },
                                 { icon: "📭", text: "Sans spam" },
@@ -242,7 +206,9 @@ export default function NewsletterSection() {
                             ].map(({ icon, text }) => (
                                 <div key={text} className="flex flex-col items-center gap-1">
                                     <span className="text-base">{icon}</span>
-                                    <span className="text-xs text-gray-400 font-medium whitespace-nowrap">{text}</span>
+                                    <span className="text-xs text-gray-400 dark:text-gray-500 font-medium whitespace-nowrap transition-colors duration-300">
+                                        {text}
+                                    </span>
                                 </div>
                             ))}
                         </motion.div>

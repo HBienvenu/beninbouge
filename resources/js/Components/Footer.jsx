@@ -22,9 +22,9 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-    { label: "Projets Structurels", href: "/about" },
-    { label: "Actualités", href: "/contact" },
-    { label: "Événements", href: "/faq" },
+    { label: "Projets Structurels", href: "#" },
+    { label: "Actualités", href: "#" },
+    { label: "Événements", href: "#" },
 ];
 
 const contactInfo = [

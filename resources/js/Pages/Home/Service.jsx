@@ -7,28 +7,28 @@ const items = [
         icon: <FaCog className="w-8 h-8" />,
         title: "Projets Privés et Publics",
         description: "Des initiatives locales qui font bouger le Bénin.",
-        href: "/projets",
+        href: "#",
         active: false,
     },
     {
         icon: <MdEvent className="w-8 h-8" />,
         title: "Évènements",
         description: "Les rendez-vous qui rassemblent et font vibrer le Bénin.",
-        href: "/events",
+        href: "#",
         active: false,
     },
     {
         icon: <FaGlobe className="w-8 h-8" />,
         title: "Actualités",
         description: "Le quotidien du béninois raconté par nous.",
-        href: "/actualites",
+        href: "#",
         active: false,
     },
 ];
 
 export default function AboutSection() {
     return (
-        <section className="relative pt-14 overflow-hidden bg-gradient-to-br from-[#004d2e] via-[#006b3e] to-[#009a55] dark:bg-slate-800 dark:bg-none pb-20">
+        <section className="relative pt-14 overflow-hidden bg-gradient-to-br from-[#004d2e] via-[#006b3e] to-[#009a55] dark:bg-slate-950 dark:bg-none pb-20">
 
             {/* Cercles décoratifs en arrière-plan */}
             <div className="absolute top-[-80px] right-[-80px] w-72 h-72 bg-white/10 rounded-full blur-2xl" />
@@ -67,7 +67,7 @@ export default function AboutSection() {
                         {items.map((item, index) => (
                             <Link
                                 key={index}
-                                href={item.href}
+                                href="#"
                                 data-aos="fade-left"
                                 data-aos-delay={index * 150}
                                 className={`flex items-start gap-5 px-6 py-5 rounded-2xl transition-all duration-300 group ${
