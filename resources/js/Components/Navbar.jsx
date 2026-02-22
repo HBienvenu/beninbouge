@@ -1,9 +1,10 @@
 import { Link } from "@inertiajs/react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navRef = useRef(null);
 
     const menuVariants = {
         hidden: { 
@@ -31,9 +32,25 @@ export default function Navbar() {
         })
     };
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (navRef.current && !navRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        if (isMenuOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isMenuOpen]);
+
     return (
-        <nav className="bg-white shadow-sm fixed w-full z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav ref={navRef} className="bg-white shadow-sm fixed w-full z-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
                 <div className="flex justify-between h-16">
                     {/* Logo */}
                     <div className="flex items-center">

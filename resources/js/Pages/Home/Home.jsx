@@ -3,55 +3,11 @@ import AppLayout from "../../Layouts/AppLayout";
 import { useEffect } from "react";
 import { animate } from "animejs";
 import HeroSection from "./HeroSection";
+import RechercheSection from "./RechercheSection";
+import EvenementPasse from "./EvenementPasse";
+import Service from "./Service";
 
 export default function Home() {
-    const featuredEvents = [
-        {
-            id: 1,
-            title: "Festival International de Cotonou",
-            date: "15-20 Décembre 2024",
-            location: "Cotonou, Bénin",
-            image: "/images/festival.jpg",
-            price: "À partir de 5000 FCFA",
-            category: "Musique",
-        },
-        {
-            id: 2,
-            title: "Conférence Tech Africa",
-            date: "10-12 Janvier 2025",
-            location: "Cotonou, Bénin",
-            image: "/images/tech-conf.jpg",
-            price: "15000 FCFA",
-            category: "Technologie",
-        },
-        {
-            id: 3,
-            title: "Exposition d'Art Contemporain",
-            date: "5-20 Février 2025",
-            location: "Ouidah, Bénin",
-            image: "/images/art-expo.jpg",
-            price: "Gratuit",
-            category: "Art",
-        },
-        {
-            id: 4,
-            title: "Marché des Saveurs du Bénin",
-            date: "25-28 Mars 2025",
-            location: "Porto-Novo, Bénin",
-            image: "/images/food-market.jpg",
-            price: "2000 FCFA",
-            category: "Gastronomie",
-        },
-    ];
-
-    const categories = [
-        { name: "Musique", icon: "🎵", count: 45, color: "bg-red-100" },
-        { name: "Sport", icon: "⚽", count: 32, color: "bg-green-100" },
-        { name: "Art", icon: "🎨", count: 28, color: "bg-purple-100" },
-        { name: "Business", icon: "💼", count: 56, color: "bg-blue-100" },
-        { name: "Gastronomie", icon: "🍽️", count: 41, color: "bg-yellow-100" },
-        { name: "Technologie", icon: "💻", count: 23, color: "bg-indigo-100" },
-    ];
 
     const testimonials = [
         {
@@ -95,83 +51,13 @@ export default function Home() {
             <HeroSection />
 
             {/* Categories Section */}
-            <section className="py-16 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2
-                        className="text-3xl font-bold text-center mb-12"
-                        data-aos="fade-up"
-                    >
-                        Catégories Populaires
-                    </h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        {categories.map((category, index) => (
-                            <Link
-                                key={index}
-                                href={`/categories/${category.name.toLowerCase()}`}
-                                className={`${category.color} p-6 rounded-lg text-center hover:shadow-lg transition transform hover:-translate-y-1`}
-                            >
-                                <div className="text-4xl mb-3">
-                                    {category.icon}
-                                </div>
-                                <h3 className="font-semibold text-gray-800">
-                                    {category.name}
-                                </h3>
-                                <p className="text-sm text-gray-600">
-                                    {category.count} événements
-                                </p>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <RechercheSection />
 
             {/* Featured Events */}
-            <section className="py-16 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center mb-12">
-                        <h2 className="text-3xl font-bold">
-                            Événements à venir
-                        </h2>
-                        <Link
-                            href="/events"
-                            className="text-indigo-600 hover:text-indigo-700 font-semibold"
-                        >
-                            Voir tout →
-                        </Link>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {featuredEvents.map((event) => (
-                            <Link
-                                key={event.id}
-                                href={`/events/${event.id}`}
-                                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition"
-                            >
-                                <div className="h-48 bg-gray-300 relative">
-                                    <div className="absolute top-4 right-4 bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">
-                                        {event.category}
-                                    </div>
-                                </div>
-                                <div className="p-5">
-                                    <h3 className="font-bold text-lg mb-2">
-                                        {event.title}
-                                    </h3>
-                                    <p className="text-gray-600 mb-2">
-                                        <span className="mr-2">📅</span>{" "}
-                                        {event.date}
-                                    </p>
-                                    <p className="text-gray-600 mb-2">
-                                        <span className="mr-2">📍</span>{" "}
-                                        {event.location}
-                                    </p>
-                                    <p className="text-indigo-600 font-semibold">
-                                        {event.price}
-                                    </p>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <EvenementPasse />
+
+            {/* Service */}
+            <Service />
 
             {/* How It Works */}
             <section className="py-16 bg-white">

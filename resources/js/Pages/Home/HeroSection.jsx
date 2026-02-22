@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 const images = [
-    "/images/accueil/image1.jpg",
-    "/images/accueil/image2.jpg",
-    "/images/accueil/image3.jpg",
-    "/images/accueil/image4.jpg",
+    "/images/accueil/image1.webp",
+    "/images/accueil/image2.webp",
+    "/images/accueil/image3.webp",
+    "/images/accueil/image4.webp",
 ];
 
 export default function HeroSection() {
@@ -24,7 +24,7 @@ export default function HeroSection() {
     }, []);
 
     useEffect(() => {
-        if (!imagesLoaded) return; // ✅ on démarre le slider seulement après chargement
+        if (!imagesLoaded) return; // on démarre le slider seulement après chargement
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % images.length);
         }, 5000);
@@ -33,11 +33,10 @@ export default function HeroSection() {
 
     return (
         // hauteur fixe sur la section, sinon les absolute n'ont pas de référence
-        <section className="relative text-white overflow-hidden min-h-[600px] md:min-h-[700px]">
+        <section className="relative text-white overflow-hidden min-h-[600px] md:min-h-[700px] md:pt-20 p-8">
 
             {/* Skeleton — fond sombre pendant le chargement */}
-            <div
-                className={`absolute inset-0 bg-gray-900 transition-opacity duration-700 z-10 ${
+            <div className={`absolute inset-0 bg-gray-900 transition-opacity duration-700 z-10 ${
                     imagesLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
             >
@@ -55,6 +54,7 @@ export default function HeroSection() {
             {images.map((img, index) => (
                 <div
                     key={img}
+                    loading="lazy"
                     className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
                     style={{
                         backgroundImage: `url(${img})`,
@@ -68,29 +68,18 @@ export default function HeroSection() {
 
             {/* Contenu */}
             <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-                <div className="text-center">
+                <div className="text-center" data-aos="fade-down" data-aos-delay="200">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6">
                         Découvrez les Meilleurs Événements au Bénin
                     </h1>
                     <p className="text-xl md:text-2xl mb-10 text-gray-200">
                         Concerts, Conférences, Expositions et plus encore
                     </p>
-                    <div className="max-w-3xl mx-auto">
-                        <div className="flex flex-col md:flex-row gap-4 justify-center">
-                            <input
-                                type="text"
-                                placeholder="Rechercher un événement..."
-                                className="flex-1 px-6 py-4 rounded-lg text-gray-900 text-lg"
-                            />
-                            <button className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition">
-                                Rechercher
-                            </button>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 {/* Indicateurs (points) */}
-                <div className="flex justify-center gap-2 mt-10">
+                <div className="flex justify-center gap-2 mt-10" data-aos="fade-down" data-aos-delay="200">
                     {images.map((_, index) => (
                         <button
                             key={index}
