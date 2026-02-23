@@ -32,9 +32,21 @@ RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions \
 # Créer SQLite
 RUN touch database/database.sqlite
 
+# Copier le Caddyfile
+COPY Caddyfile /etc/caddy/Caddyfile
+
 # Rendre start.sh exécutable
 RUN chmod +x start.sh
 
 EXPOSE 80
 
 CMD ["bash", "start.sh"]
+```
+
+Donc tu as **3 fichiers à la racine** :
+```
+mon-projet/
+├── Dockerfile
+├── start.sh
+├── Caddyfile    ← nouveau
+└── ...
