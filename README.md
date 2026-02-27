@@ -70,3 +70,4 @@ Cette mise à jour concerne uniquement :
 ```bash
 git clone https://github.com/username/beninbouge.git
 cd beninbouge
+php artisan serve
