@@ -1,23 +1,10 @@
 services:
   - type: web
     name: beninbouge
-    runtime: php
-    region: ohio
+    runtime: image
+    repo: https://github.com/HBienvenu/beninbouge
     plan: free
-    buildCommand: |
-      # Installation des dépendances PHP
-      composer install --no-dev --optimize-autoloader
-
-      # Installation des dépendances Node.js
-      npm install
-
-      # Build des assets
-      npm run build
-
-      # Configuration des permissions
-      chmod -R 775 storage bootstrap/cache
-    startCommand: |
-      php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
         value: production
@@ -27,6 +14,8 @@ services:
         value: https://beninbouge.onrender.com
       - key: APP_KEY
         generateValue: true
+      - key: LOG_CHANNEL
+        value: stderr
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_HOST
